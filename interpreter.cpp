@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
 			continue;
 		}
 										 // V - Tab Character
-		if(c != ' ' && c != '\n' && && c != 9 && !inComment)
+		if(c != ' ' && c != '\n' && c != 9 && !inComment)
 			code += c;
 	}
 	f.close();
