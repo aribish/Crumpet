@@ -8,11 +8,11 @@ using std::string;
 using std::ifstream;
 
 int main(int argc, char** argv) {
-	int reg_a = 1;
-	int reg_b = 0;
-	int sp = 0; // stack pointer
-	int bm = 0; // bookmark
-	int stack[STACK_MAX];
+	short int reg_a = 1;
+	short int reg_b = 0;
+	short int sp = 0; // stack pointer
+	short int bm = 0; // bookmark
+	short int stack[STACK_MAX];
 	std::string code;
 
 	// Check console arguments
@@ -52,8 +52,12 @@ int main(int argc, char** argv) {
 	}
 
 	// Interpret the source code
-	int swap = 0;
+	short int swap = 0;
 	for(int i = 0; i < code.length(); i++) {
+		#ifdef DEBUG
+			std::cout << code[i] << ": Output: (";
+		#endif
+
 		switch(code[i]) {
 			case '>': // Push
 				stack[sp] = reg_a;
@@ -99,9 +103,18 @@ int main(int argc, char** argv) {
 		}
 
 		#ifdef DEBUG
-		std::cout << code[i] << ": a = " << reg_a << ", b = " << reg_b << ", s[0] = " << stack[0] << ", s[1] = " << stack[1] << ", s[2] = " << stack[2] << ", s[3] = " << stack[3] << ", s[4] = " << stack[4] << '\n';
+		std::cout << ") Reg A: " << reg_a << " Reg B: " << reg_b << " Stack:\n";
+		for(int j = 0; j < STACK_MAX; j++) {
+			printf("%04x ", stack[j]);
+
+			if((j + 1) % 16 == 0) std::cout << '\n';
+		}
+		std::cout << "Press Enter to Continue\n";
+		std::cin.get();
 		#endif
 	}
 
 	return 0;
 }
+
+// TODO IMPLEMENT STEP-BY-STEP DEBUGGER OPTION WITH STRACK TRACES
