@@ -1,5 +1,5 @@
 # Crumpet
-A rudimentary programming language utilizing a few single-character instructions.
+An esoteric stack-centered programming language utilizing a few single-character instructions.
 
 ## Compiling
 To compile the interpreter source code, you must have make installed on your system. Run 'make 
