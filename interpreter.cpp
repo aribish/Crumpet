@@ -37,7 +37,7 @@ int main(int argc, char** argv) {
 			inComment = false;
 			continue;
 		}
-										 // V - Tab Character
+										 // 9 is the Tab Character
 		if(c != ' ' && c != '\n' && c != 9 && !inComment)
 			code += c;
 	}
